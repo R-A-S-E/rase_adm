@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1019693657378",
+    "project_id": "rase-adm",
+    "storage_bucket": "rase-adm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019693657378:android:6d909a968bfe8553f6097b",
+        "android_client_info": {
+          "package_name": "com.example.rase_adm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019693657378-0dthtcdtnd3o6oj689cb07qh1stoatea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw-SAdkZ6xV4-uRnEY5PT3YXuBHS0TgZw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019693657378-0dthtcdtnd3o6oj689cb07qh1stoatea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
