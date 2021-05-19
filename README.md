@@ -11,5 +11,7 @@
 | implementar:x: | Páginas:hourglass:   |      |
 | Ordenar:x:     |                      |      |
 | Relatório​s:x:  |                      |      |
+| Login:x:       |                      |      |
+| Hierarquia:x:  |                      |      |
 | Web:x:         |                      |      |
 
