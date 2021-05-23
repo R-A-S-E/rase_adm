@@ -7,7 +7,7 @@ class CadastrarPage extends StatefulWidget {
 }
 
 class _CadastrarPageState extends State<CadastrarPage> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +21,8 @@ class _CadastrarPageState extends State<CadastrarPage> {
       ),
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
+          child: Form(
+        key: _formKey,
         child: Column(
           children: <Widget>[
             formProdut(
@@ -35,8 +37,10 @@ class _CadastrarPageState extends State<CadastrarPage> {
               padding: EdgeInsets.only(top: 60.0, bottom: 10.0),
               child: ElevatedButton(
                 onPressed: () {
-                  cadas();
-                  Navigator.pop(context);
+                  if (_formKey.currentState.validate()) {
+                    cadas();
+                    Navigator.pop(context);
+                  }
                 },
                 child: Text("Cadastrar", style: TextStyle(fontSize: 20)),
                 style: ElevatedButton.styleFrom(
@@ -45,7 +49,7 @@ class _CadastrarPageState extends State<CadastrarPage> {
             ),
           ],
         ),
-      ),
+      )),
     );
   }
 
@@ -54,6 +58,13 @@ class _CadastrarPageState extends State<CadastrarPage> {
     return Container(
       padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
       child: TextFormField(
+        validator: (value) {
+          if (value.isEmpty) {
+            return "O campo é obrigatório";
+          } else {
+            return null;
+          }
+        },
         keyboardType: type,
         controller: c,
         decoration: InputDecoration(
