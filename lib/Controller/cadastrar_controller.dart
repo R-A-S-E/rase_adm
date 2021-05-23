@@ -8,12 +8,12 @@ final vendaController = TextEditingController();
 
 cadas() {
   FirebaseFirestore.instance
-      .collection("Produtos")
+      .collection("produtos")
       .doc("${produtoController.text}")
       .set({
-    'Quantidade': "${quantidadeController.text}",
-    'Valor': "${valorController.text}",
-    'Venda': "${vendaController.text}"
+    'quantidade': "${quantidadeController.text}",
+    'valor': "${valorController.text}",
+    'venda': "${vendaController.text}"
   });
   produtoController.text = "";
   quantidadeController.text = "";
