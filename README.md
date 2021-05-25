@@ -11,6 +11,4 @@
 | Hierarquia:x: |                    | Listar:white_check_mark:     |
 | Web:x:        |                    | alterar:white_check_mark:    |
 |               |                    | Ordenar :white_check_mark:   |
-|               |                    |                              |
-|               |                    |                              |
 
