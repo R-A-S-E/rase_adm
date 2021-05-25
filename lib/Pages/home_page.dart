@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rase_adm/Pages/alterar_page.dart';
-import 'package:rase_adm/Pages/cadastrar_page.dart';
+import 'package:rase_adm/Pages/produtos_page.dart';
 import 'package:rase_adm/Pages/relatorio_page.dart';
 import 'package:rase_adm/Pages/vender_page.dart';
 
@@ -31,8 +30,7 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    textBut("Cadastrar", CadastrarPage()),
-                    textBut("Alterar", AlterarPage()),
+                    textBut("Produtos", ProdutosPage()),
                     textBut("Vender", VenderPage()),
                     textBut("Relatórios", RelatorioPage()),
                   ],

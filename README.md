@@ -4,13 +4,13 @@
 
 
 
-| To Do          | Doing              | Done                         |
-| -------------- | :----------------- | :--------------------------- |
-| alterar❌       | Páginas:hourglass: | Cadastrar :white_check_mark: |
-| implementar:x: | Listar:hourglass:  | Firebase:white_check_mark:   |
-| Ordenar :x:    |                    |                              |
-| Relatório​s:x:  |                    |                              |
-| Login:x:       |                    |                              |
-| Hierarquia:x:  |                    |                              |
-| Web:x:         |                    |                              |
+| To Do         | Doing              | Done                         |
+| ------------- | :----------------- | :--------------------------- |
+| Relatórios:x: | Páginas:hourglass: | Cadastrar :white_check_mark: |
+| Login:x:      |                    | Firebase:white_check_mark:   |
+| Hierarquia:x: |                    | Listar:white_check_mark:     |
+| Web:x:        |                    | alterar:white_check_mark:    |
+|               |                    | Ordenar :white_check_mark:   |
+|               |                    |                              |
+|               |                    |                              |
 
