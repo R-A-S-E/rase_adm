@@ -25,7 +25,11 @@ class _ProdutosPageState extends State<ProdutosPage> {
     itens = [];
     produtoInscricao?.cancel();
 
-    produtoInscricao = db.collection('produtos').snapshots().listen((snapshot) {
+    produtoInscricao = db
+        .collection('produtos')
+        .orderBy('nome', descending: order)
+        .snapshots()
+        .listen((snapshot) {
       final List<Produto> produtos = snapshot.docs
           .map((documentSnapshot) =>
               Produto.fromMap(documentSnapshot.data(), documentSnapshot.id))
@@ -223,8 +227,9 @@ class _ProdutosPageState extends State<ProdutosPage> {
                             child: Text("Editar",
                                 style: TextStyle(
                                     color: Colors.white70, fontSize: 20.0)),
-                            onPressed: () =>
-                                _navProduto(context, itens[index])),
+                            onPressed: () {
+                              _navProduto(context, itens[index]);
+                            }),
                       ),
                       Container(
                         width: 380.0,
