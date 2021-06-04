@@ -15,6 +15,7 @@ class _VenderPageState extends State<VenderPage> {
   List<Produto> itens;
   var db = FirebaseFirestore.instance;
   StreamSubscription<QuerySnapshot> produtoInscricao;
+
   static String _displayStringForOption(Produto produto) => produto.nome;
 
   @override
@@ -44,19 +45,20 @@ class _VenderPageState extends State<VenderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "Vendas",
-            style:
-                TextStyle(color: Colors.white70, fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: Colors.grey[900],
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "Vendas",
+          style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.white,
-        body: Column(
-          children: <Widget>[
-            Autocomplete<Produto>(
+        backgroundColor: Colors.grey[900],
+      ),
+      backgroundColor: Colors.white,
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: Autocomplete<Produto>(
               displayStringForOption: _displayStringForOption,
               optionsBuilder: (TextEditingValue textEditingValue) {
                 if (textEditingValue.text == '') {
@@ -76,59 +78,33 @@ class _VenderPageState extends State<VenderPage> {
                 addCartItem(cartProduct);
               },
             ),
-            //DataTable(columns: columns, rows: rows)
-            Padding(
-              padding: EdgeInsets.all(10),
-              child: Table(
-                  border: TableBorder.all(),
-                  columnWidths: const <int, TableColumnWidth>{
-                    0: IntrinsicColumnWidth(),
-                    1: FlexColumnWidth(),
-                    2: FixedColumnWidth(64),
-                  },
-                  defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-                  children: <TableRow>[
-                    TableRow(children: <Widget>[
-                      Container(
-                        width: 20,
-                        child: Text(" ID"),
-                      ),
-                      Container(
-                        width: 64,
-                        child: Text("ALuz puto"),
-                      ),
-                      Container(
-                        width: 64,
-                        child: Text("Amém a lux"),
-                      ),
-                      Container(
-                        width: 64,
-                        child: Text("ALuz puto"),
-                      ),
-                      Container(
-                        width: 64,
-                        child: Text("ALuz puto"),
-                      ),
-                    ])
-                  ]),
+          ),
+          Padding(
+            padding: EdgeInsets.all(10),
+            child: DataTable(
+              columns: <DataColumn>[
+                DataColumn(label: Text("PROD")),
+                DataColumn(label: Text("QTD")),
+                DataColumn(label: Text("PREÇO")),
+                DataColumn(label: Text("R\$")),
+              ],
+              rows: cprodutos
+                  .map(
+                    (prod) => DataRow(cells: [
+                      DataCell(Text(prod.nome)),
+                      DataCell(Text('${prod.quantidade}')),
+                      DataCell(Text(prod.venda)),
+                      DataCell(Container(
+                        child: Text('lixo'),
+                      )),
+                    ]),
+                  )
+                  .toList(),
             ),
-            Expanded(
-                child: ListView.builder(
-              itemCount: cprodutos.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    // _showOptions(context, index, doc);
-                  },
-                  child: ListTile(
-                    title: Text(cprodutos[index].nome),
-                    subtitle: Text("${cprodutos[index].quantidade}"),
-                  ),
-                );
-              },
-            )),
-          ],
-        ));
+          )
+        ],
+      ),
+    );
   }
 
   void addCartItem(CartProduct cartProduct) {
