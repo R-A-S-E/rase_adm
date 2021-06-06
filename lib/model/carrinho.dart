@@ -2,7 +2,7 @@ class CartProduct {
   String id;
   int quantidade;
   String nome;
-  String venda;
+  double venda;
 
   CartProduct();
 

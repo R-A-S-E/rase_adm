@@ -74,14 +74,17 @@ class _VenderPageState extends State<VenderPage> {
                 cartProduct.id = produto.id;
                 cartProduct.quantidade = 1;
                 cartProduct.nome = produto.nome;
-                cartProduct.venda = produto.venda;
+                cartProduct.venda = double.parse(produto.venda);
                 addCartItem(cartProduct);
               },
             ),
           ),
-          Padding(
+          Container(
+            alignment: Alignment.topLeft,
             padding: EdgeInsets.all(10),
             child: DataTable(
+              dataRowHeight: 50,
+              columnSpacing: 25,
               columns: <DataColumn>[
                 DataColumn(label: Text("PROD")),
                 DataColumn(label: Text("QTD")),
@@ -92,10 +95,25 @@ class _VenderPageState extends State<VenderPage> {
                   .map(
                     (prod) => DataRow(cells: [
                       DataCell(Text(prod.nome)),
-                      DataCell(Text('${prod.quantidade}')),
-                      DataCell(Text(prod.venda)),
+                      DataCell(Row(
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(right: 6),
+                            child: Icon(Icons.remove_circle),
+                          ),
+                          Text(
+                            '${prod.quantidade}',
+                            textAlign: TextAlign.right,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 6),
+                            child: Icon(Icons.add_circle),
+                          )
+                        ],
+                      )),
+                      DataCell(Text('${prod.venda}')),
                       DataCell(Container(
-                        child: Text('lixo'),
+                        child: Text('${prod.quantidade * prod.venda}'),
                       )),
                     ]),
                   )
