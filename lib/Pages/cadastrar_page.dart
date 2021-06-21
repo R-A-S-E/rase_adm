@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:rase_adm/model/produtos.dart';
+import 'package:rase_adm/shared/model/produtos.dart';
 
 class CadastrarPage extends StatefulWidget {
   final Produto prod;
