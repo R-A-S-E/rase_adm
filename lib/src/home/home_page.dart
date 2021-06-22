@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rase_adm/src/home/product/produtos_page.dart';
 import 'package:rase_adm/Pages/relatorio_page.dart';
 import 'package:rase_adm/Pages/vender_page.dart';
+import 'package:rase_adm/src/product/produtos_page.dart';
 
 class HomePage extends StatefulWidget {
   @override

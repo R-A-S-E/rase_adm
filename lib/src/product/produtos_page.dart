@@ -7,7 +7,6 @@ import 'package:rase_adm/shared/model/produtos.dart';
 import 'package:rase_adm/shared/widgets/produc_card_widget.dart';
 
 enum OrderOptions { orderaz, orderza }
-//TODO fazer essa porra aqui funcionar
 
 class ProdutosPage extends StatefulWidget {
   @override
@@ -87,7 +86,8 @@ class _ProdutosPageState extends State<ProdutosPage> {
                     return ListView.builder(
                         itemCount: doc.length,
                         itemBuilder: (context, index) => ProductCard(
-                              doc: itens[index],
+                              doc: itens,
+                              index: index,
                             ));
                 }
               }),

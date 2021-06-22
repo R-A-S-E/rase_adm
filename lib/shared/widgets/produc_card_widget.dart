@@ -3,8 +3,9 @@ import 'package:rase_adm/shared/model/produtos.dart';
 import 'package:rase_adm/shared/widgets/BottomSheet_opt1.dart';
 
 class ProductCard extends StatelessWidget {
-  final Produto doc;
-  const ProductCard({Key key, this.doc}) : super(key: key);
+  final List<Produto> doc;
+  final int index;
+  const ProductCard({Key key, this.doc, this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(5.0)),
                   ),
                   child: Text(
-                    doc.nome,
+                    doc[index].nome,
                     style: TextStyle(fontSize: 18.0, color: Colors.white70),
                   ),
                 ),
@@ -46,7 +47,7 @@ class ProductCard extends StatelessWidget {
                             size: 32.0,
                             color: Colors.grey[700],
                           ),
-                          Text(doc.quantidade,
+                          Text(doc[index].quantidade,
                               style: TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white70,
@@ -60,7 +61,7 @@ class ProductCard extends StatelessWidget {
                             size: 32.0,
                             color: Colors.grey[700],
                           ),
-                          Text("R\$ " + doc.preco,
+                          Text("R\$ " + doc[index].preco,
                               style: TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white70,
@@ -74,7 +75,7 @@ class ProductCard extends StatelessWidget {
                             size: 32.0,
                             color: Colors.grey[700],
                           ),
-                          Text("R\$ " + doc.venda,
+                          Text("R\$ " + doc[index].venda,
                               style: TextStyle(
                                 fontSize: 16.0,
                                 color: Colors.white70,
@@ -88,8 +89,14 @@ class ProductCard extends StatelessWidget {
             )),
       ),
       onTap: () {
-        print(doc.id);
-        BottomShetopt1(doc: doc);
+        showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return BottomShetopt1(
+                doc: doc,
+                index: index,
+              );
+            });
       },
     );
   }

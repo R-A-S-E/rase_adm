@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:rase_adm/shared/model/produtos.dart';
 
 class BottomShetopt1 extends StatelessWidget {
-  final Produto doc;
-  const BottomShetopt1({Key key, this.doc}) : super(key: key);
+  final List<Produto> doc;
+  final int index;
+  const BottomShetopt1({Key key, this.doc, this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class BottomShetopt1 extends StatelessWidget {
                   width: 380.0,
                   color: Colors.grey[900],
                   padding: EdgeInsets.all(10.0),
-                  child: Text(doc.nome,
+                  child: Text('${doc[index].nome}',
                       style: TextStyle(
                           color: Colors.white70,
                           fontSize: 25.0,
