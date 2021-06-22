@@ -101,74 +101,11 @@ class _ProdutosPageState extends State<ProdutosPage> {
     );
   }
 
-  void _showOptions2(BuildContext context, int index, List doc) {
-    showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return BottomSheet(
-              onClosing: () {},
-              builder: (context) {
-                return Container(
-                  width: 380.0,
-                  color: Colors.grey[850],
-                  padding: EdgeInsets.only(bottom: 10.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Container(
-                        alignment: Alignment.center,
-                        width: 380.0,
-                        color: Colors.grey[900],
-                        padding: EdgeInsets.all(10.0),
-                        child: Text("tem certeza ?",
-                            style: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 25.0,
-                                fontWeight: FontWeight.bold)),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          TextButton(
-                              child: Text("Sim",
-                                  style: TextStyle(
-                                      color: Colors.white70, fontSize: 20.0)),
-                              onPressed: () {
-                                Navigator.pop(context);
-                                _deletProd(context, doc[index], index);
-                              }),
-                          TextButton(
-                            child: Text("Não",
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontSize: 20.0,
-                                )),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-              });
-        });
-  }
-
   Stream<QuerySnapshot> getListProd() {
     return FirebaseFirestore.instance
         .collection("produtos")
         .orderBy('nome', descending: order)
         .snapshots();
-  }
-
-  void _deletProd(
-      BuildContext context, DocumentSnapshot doc, int position) async {
-    db.collection('produtos').doc(doc.id).delete();
-    setState(() {
-      itens.removeAt(position);
-    });
   }
 
   void _criarNovoProd(context, Produto prod) async {
@@ -177,11 +114,6 @@ class _ProdutosPageState extends State<ProdutosPage> {
         MaterialPageRoute(
             builder: (context) =>
                 CadastrarPage(Produto(null, '', '', '', ''))));
-  }
-
-  void _navProduto(context, Produto prod) async {
-    await Navigator.push(
-        context, MaterialPageRoute(builder: (context) => CadastrarPage(prod)));
   }
 
   void _orderList(OrderOptions result) {

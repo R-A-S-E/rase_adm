@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:rase_adm/Pages/cadastrar_page.dart';
 import 'package:rase_adm/shared/model/produtos.dart';
+import 'package:rase_adm/shared/widgets/bottomsheet_delet.dart';
 
-class BottomShetopt1 extends StatelessWidget {
+class BottomShetedit extends StatelessWidget {
   final List<Produto> doc;
   final int index;
-  const BottomShetopt1({Key key, this.doc, this.index}) : super(key: key);
+  const BottomShetedit({Key key, this.doc, this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class BottomShetopt1 extends StatelessWidget {
                           style:
                               TextStyle(color: Colors.white70, fontSize: 20.0)),
                       onPressed: () {
-                        // _navProduto(context, itens[index]);
+                        _navProduto(context, doc[index]);
                       }),
                 ),
                 Container(
@@ -54,7 +56,14 @@ class BottomShetopt1 extends StatelessWidget {
                         )),
                     onPressed: () {
                       Navigator.pop(context);
-                      // _showOptions2(context, index, doc);
+                      showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return BottomSheetDelet(
+                              itens: doc,
+                              index: index,
+                            );
+                          });
                     },
                   ),
                 ),
@@ -62,5 +71,10 @@ class BottomShetopt1 extends StatelessWidget {
             ),
           );
         });
+  }
+
+  void _navProduto(context, Produto prod) async {
+    await Navigator.push(
+        context, MaterialPageRoute(builder: (context) => CadastrarPage(prod)));
   }
 }

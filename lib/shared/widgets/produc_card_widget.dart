@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rase_adm/shared/model/produtos.dart';
-import 'package:rase_adm/shared/widgets/BottomSheet_opt1.dart';
+import 'package:rase_adm/shared/widgets/bottomsheet_edit.dart';
 
 class ProductCard extends StatelessWidget {
   final List<Produto> doc;
@@ -92,7 +92,7 @@ class ProductCard extends StatelessWidget {
         showModalBottomSheet(
             context: context,
             builder: (context) {
-              return BottomShetopt1(
+              return BottomShetedit(
                 doc: doc,
                 index: index,
               );
